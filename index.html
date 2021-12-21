@@ -1,0 +1,855 @@
+<!DOCTYPE HTML>
+<html lang="ar" dir="rt1">
+<head>
+<meta charset="UTF-8" />
+<meta name="Description" content="حساب المعدل التراكمي والفصلي الجامعي ">
+<meta name="keywords" content="حساب المعدل التراكمي والفصلي بكل دقة ">
+        <tital> <div class='submenudiv' style='background:rgba(197, 154, 60,.9);width: 100%;top:72px;'>
+                <div style='max-width:960px;margin:0px auto;'>
+                        <table border=0 width=100%><tr><td><h3 style='margin:3px;'>حساب المعدل التراكمي</h3></td><td align=centre></td></table>
+                </div>
+        </div></tital>
+        <meta property="og:title" content="حساب المعدل - حساب المعدل التراكمي - احسب معدلك" />
+   </head>
+
+                  </script>
+    </h1>
+<body>
+  <div class="wsu-main-topic">
+
+<script language="JavaScript" type="text/javascript">
+    <!--
+
+    function round2d(n) {
+        return (.01 * Math.round(100 * n));
+    }
+
+    function gpacalc() {
+        //define valid grades and their values
+        var gr = new Array();
+        var cr = new Array();
+        var ingr = new Array();
+        var incr = new Array();
+
+        // define valid grades and their values
+        var grcount = 27;
+        gr[1] = "A";
+        cr[1] = 4;
+        gr[2] = "A-";
+        cr[2] = 3.7;
+        gr[3] = "B+";
+        cr[3] = 3.3;
+        gr[4] = "B";
+        cr[4] = 3;
+        gr[5] = "B-";
+        cr[5] = 2.7;
+        gr[6] = "C+";
+        cr[6] = 2.3;
+        gr[7] = "C";
+        cr[7] = 2;
+        gr[8] = "C-";
+        cr[8] = 1.7;
+        gr[9] = "D+";
+        cr[9] = 1.3;
+        gr[10] = "D";
+        cr[10] = 1;
+        gr[12] = "F";
+        cr[12] = 0;
+        gr[13] = "a";
+        cr[13] = 4;
+        gr[14] = "a-";
+        cr[14] = 3.7;
+        gr[15] = "b+";
+        cr[15] = 3.3;
+        gr[16] = "b";
+        cr[16] = 3;
+        gr[17] = "b-";
+        cr[17] = 2.7;
+        gr[18] = "c+";
+        cr[18] = 2.3;
+        gr[19] = "c";
+        cr[19] = 2;
+        gr[20] = "c-";
+        cr[20] = 1.7;
+        gr[21] = "d+";
+        cr[21] = 1.3;
+        gr[22] = "d";
+        cr[22] = 1;
+        gr[24] = "F";
+        cr[24] = 0;
+        // retrieve user input
+        ingr[0] = document.GPACalcForm.GR1.value;
+        ingr[1] = document.GPACalcForm.GR2.value;
+        ingr[2] = document.GPACalcForm.GR3.value;
+        ingr[3] = document.GPACalcForm.GR4.value;
+        ingr[4] = document.GPACalcForm.GR5.value;
+        ingr[5] = document.GPACalcForm.GR6.value;
+        ingr[6] = document.GPACalcForm.GR7.value;
+        ingr[7] = document.GPACalcForm.GR8.value;
+        incr[0] = document.GPACalcForm.CR1.value;
+        incr[1] = document.GPACalcForm.CR2.value;
+        incr[2] = document.GPACalcForm.CR3.value;
+        incr[3] = document.GPACalcForm.CR4.value;
+        incr[4] = document.GPACalcForm.CR5.value;
+        incr[5] = document.GPACalcForm.CR6.value;
+        incr[6] = document.GPACalcForm.CR7.value;
+        incr[7] = document.GPACalcForm.CR8.value;
+
+
+        // Calculate GPA
+        var allgr = 0;
+        var allcr = 0;
+        var gpa = 0;
+        for (var x = 0; x < 8; x++) {
+            if (ingr[x] == "") break;
+            //      if (isNaN(parseInt(incr[x]))) alert("Error- You did not enter a numeric credits value for Class If the class is worth 0 credits then enter the number 0 in the field.");
+            var validgrcheck = 0;
+            for (var xx = 0; xx < grcount; xx++) {
+                if (ingr[x] == gr[xx]) {
+                    allgr = allgr + (parseInt(incr[x], 10) * cr[xx]);
+                    allcr = allcr + parseInt(incr[x], 10);
+                    validgrcheck = 1;
+                    break;
+                }
+            }
+            if (validgrcheck == 0) {
+                //alert("Error- Could not recognize the grade entered for Class " + eval(x + 1) + ". Please use standard college grades in the form of a a- b+ ... f or A A- B+ ... F");
+                document.getElementById('gpacalc').innerHTML="Error- Could not recognize the grade entered for Class " + eval(x + 1) + ". Please use standard college grades in the form of a a- b+ ... f or A A- B+ ... F";
+                return 0;
+            }
+        }
+
+        // this if-check prevents a divide by zero error
+        if (allcr == 0) {
+            //alert("Error- You did not enter any credit values! GPA = N/A");
+            document.getElementById('gpacalc').innerHTML="Error- You did not enter any credit values! GPA = N/A";
+            return 0;
+        }
+
+        gpa = round2d(allgr / allcr);
+        //console.log("gpacalc");
+       // alert("Your semester GPA = " + eval(gpa));
+        document.getElementById('gpacalc').innerHTML="معدلك الفصلي هو  = " + eval(gpa);
+        
+
+        return 0;
+    }
+
+    function cumCalc() {
+        //define valid grades and their values
+        var gr = new Array();
+        var cr = new Array();
+        var ingr = new Array();
+        var incr = new Array();
+
+        // define valid grades and their values
+        var grcount = 27;
+            gr[1] = "A";
+        cr[1] = 4;
+        gr[2] = "A-";
+        cr[2] = 3.7;
+        gr[3] = "B+";
+        cr[3] = 3.3;
+        gr[4] = "B";
+        cr[4] = 3;
+        gr[5] = "B-";
+        cr[5] = 2.7;
+        gr[6] = "C+";
+        cr[6] = 2.3;
+        gr[7] = "C";
+        cr[7] = 2;
+        gr[8] = "C-";
+        cr[8] = 1.7;
+        gr[9] = "D+";
+        cr[9] = 1.3;
+        gr[10] = "D";
+        cr[10] = 1;
+        gr[12] = "F";
+        cr[12] = 0;
+        gr[13] = "a";
+        cr[13] = 4;
+        gr[14] = "a-";
+        cr[14] = 3.7;
+        gr[15] = "b+";
+        cr[15] = 3.3;
+        gr[16] = "b";
+        cr[16] = 3;
+        gr[17] = "b-";
+        cr[17] = 2.7;
+        gr[18] = "c+";
+        cr[18] = 2.3;
+        gr[19] = "c";
+        cr[19] = 2;
+        gr[20] = "c-";
+        cr[20] = 1.7;
+        gr[21] = "d+";
+        cr[21] = 1.3;
+        gr[22] = "d";
+        cr[22] = 1;
+        gr[24] = "F";
+        cr[24] = 0;
+
+        // retrieve user input
+        ingr[0] = document.GPACalcForm.GR1.value;
+        ingr[1] = document.GPACalcForm.GR2.value;
+        ingr[2] = document.GPACalcForm.GR3.value;
+        ingr[3] = document.GPACalcForm.GR4.value;
+        ingr[4] = document.GPACalcForm.GR5.value;
+        ingr[5] = document.GPACalcForm.GR6.value;
+        ingr[6] = document.GPACalcForm.GR7.value;
+        ingr[7] = document.GPACalcForm.GR8.value;
+        incr[0] = document.GPACalcForm.CR1.value;
+        incr[1] = document.GPACalcForm.CR2.value;
+        incr[2] = document.GPACalcForm.CR3.value;
+        incr[3] = document.GPACalcForm.CR4.value;
+        incr[4] = document.GPACalcForm.CR5.value;
+        incr[5] = document.GPACalcForm.CR6.value;
+        incr[6] = document.GPACalcForm.CR7.value;
+        incr[7] = document.GPACalcForm.CR8.value;
+
+        // Calculate GPA
+        var allgr = 0;
+        var allcr = 0;
+        var gpa = 0;
+        for (var x = 0; x < 8; x++) {
+            if (ingr[x] == "") break;
+            //      if (isNaN(parseInt(incr[x]))) alert("Error- You did not enter a numeric credits value for Class If the class is worth 0 credits then enter the number 0 in the field.");
+            var validgrcheck = 0;
+            for (var xx = 0; xx < grcount; xx++) {
+                if (ingr[x] == gr[xx]) {
+                    allgr = allgr + (parseInt(incr[x], 10) * cr[xx]);
+                    allcr = allcr + parseInt(incr[x], 10);
+                    validgrcheck = 1;
+                    break;
+                }
+            }
+            if (validgrcheck == 0) {
+               //alert("Error- Could not recognize the grade entered for Class " + eval(x + 1) + ". Please use standard college grades in the form of a a- b+ ...f.");
+                document.getElementById('cumcalc').innerHTML="Error- Could not recognize the grade entered for Class " + eval(x + 1) + ". Please use standard college grades in the form of a a- b+ ...f.";
+                return 0;
+            }
+        }
+
+        // this if-check prevents a divide by zero error
+        if (allcr == 0) {
+            //alert("Error- You did not enter any credit values! GPA = N/A");
+            document.getElementById('cumcalc').innerHTML="Error- You did not enter any credit values! GPA = N/A";
+            return 0;
+        }
+
+        gpa = allgr / allcr;
+
+        // set variables
+        var cumGPAnum = 0;
+        var cumCredTotal = 0;
+
+        // retrieve user input
+        cumGPAnum = parseFloat(document.GPACalcForm.cumGPA.value);
+        cumCredTotal = parseFloat(document.GPACalcForm.cumCredits.value);
+
+        if (document.GPACalcForm.cumGPA.value == "") {
+            //alert("You need to enter your previous cumulative gpa in order to calculate your new one.");
+            document.getElementById('cumcalc').innerHTML="You need to enter your previous cumulative gpa in order to calculate your new one.";
+            return 0;
+        }
+        if (document.GPACalcForm.cumCredits.value == "") {
+            //alert("You need to enter the total number of credits you earned prior to this semester.");
+            document.getElementById('cumcalc').innerHTML="You need to enter the total number of credits you earned prior to this semester.";
+            return 0;
+        }
+        if (document.GPACalcForm.cumGPA.value == gpa) {
+            //if (confirm("Are you sure you are entering your previous cumulative GPA, and not your new semester GPA?" +
+                   // " Hit OK if your sure, otherwise hit Cancel to change your values.")) {} else
+                return 0;
+        }
+
+        // find total points
+        var points = 0;
+        points = (cumGPAnum * cumCredTotal);
+
+        // Add semester values to cumulative
+        points = points + allgr;
+        var credits = 0;
+        credits = cumCredTotal + allcr;
+
+        // Calculate new cumulative gpa
+        var newCum = 0;
+        newCum = round2d(points / credits);
+        
+        //console.log ("cumcalc");
+        //alert("Your new cumulative GPA is " + eval(newCum));
+         document.getElementById('cumcalc').innerHTML="معدلك التراكمي لهذا الفصل هو " + eval(newCum);
+
+
+        return 0;
+    }
+
+    function GoalCalc() {
+
+        // set variables
+        var currGPAnum = 0;
+        var currCredTotal = 0;
+        var goalGPAnum = 0;
+        var newCreditnum = 0;
+
+        // retrieve user input
+        currGPAnum = parseFloat(document.GoalGPACalc.currGPA.value);
+        cumCredTotal = parseFloat(document.GoalGPACalc.currCredits.value);
+        goalGPAnum = parseFloat(document.GoalGPACalc.goalGPA.value);
+        newCreditnum = parseFloat(document.GoalGPACalc.newCredits.value);
+
+        // find goal points
+        var points1 = 0;
+        points1 = goalGPAnum * (cumCredTotal + newCreditnum);
+
+        // Find points needed now
+        points1 = points1 - (currGPAnum * cumCredTotal);
+
+        // Calculate needed GPA
+        var GPA1 = 0;
+        GPA1 = round2d(points1 / newCreditnum);
+        console.log ("goalcalc");
+        alert("الحبيب عشان تحقق هدفك, لازم في عدد الساعات " + eval(newCreditnum) + " تجيب معدل  " + eval(GPA1));
+
+        return 0;
+    }
+
+    function RepeatCalc() {
+
+        // set variables
+        var CurrGPANum = 0;
+        var CurrCreditsNum = 0;
+        var CourseCreditsNum = 0;
+        var OldGradeNum = 0;
+        var NewGradeNum = 0;
+        var y = 0;
+        var z = 0;
+        var gr = new Array();
+        var cr = new Array();
+
+        // define valid grades and their values
+        var grcount = 27;
+            gr[1] = "A";
+        cr[1] = 4;
+        gr[2] = "A-";
+        cr[2] = 3.7;
+        gr[3] = "B+";
+        cr[3] = 3.3;
+        gr[4] = "B";
+        cr[4] = 3;
+        gr[5] = "B-";
+        cr[5] = 2.7;
+        gr[6] = "C+";
+        cr[6] = 2.3;
+        gr[7] = "C";
+        cr[7] = 2;
+        gr[8] = "C-";
+        cr[8] = 1.7;
+        gr[9] = "D+";
+        cr[9] = 1.3;
+        gr[10] = "D";
+        cr[10] = 1;
+        gr[12] = "F";
+        cr[12] = 0;
+        gr[13] = "a";
+        cr[13] = 4;
+        gr[14] = "a-";
+        cr[14] = 3.7;
+        gr[15] = "b+";
+        cr[15] = 3.3;
+        gr[16] = "b";
+        cr[16] = 3;
+        gr[17] = "b-";
+        cr[17] = 2.7;
+        gr[18] = "c+";
+        cr[18] = 2.3;
+        gr[19] = "c";
+        cr[19] = 2;
+        gr[20] = "c-";
+        cr[20] = 1.7;
+        gr[21] = "d+";
+        cr[21] = 1.3;
+        gr[22] = "d";
+        cr[22] = 1;
+        gr[24] = "F";
+        cr[24] = 0;
+
+        // retrieve user input
+        CurrGPANum = parseFloat(document.RepeatCalcForm.CurrGPA.value);
+        CurrCreditsNum = parseFloat(document.RepeatCalcForm.CurrCredits.value);
+        CourseCreditsNum = parseFloat(document.RepeatCalcForm.CourseCredits.value);
+        OldGrade = document.RepeatCalcForm.OldGrade.value;
+        NewGrade = document.RepeatCalcForm.NewGrade.value;
+
+        // Calculate new GPA
+        for (var xx = 0; xx < grcount; xx++) {
+            if (OldGrade == gr[xx]) {
+                OldGradeNum = cr[xx];
+
+                break;
+            }
+        }
+
+        for (var xx = 0; xx < grcount; xx++) {
+            if (NewGrade == gr[xx]) {
+                NewGradeNum = cr[xx];
+
+                break;
+            }
+        }
+
+        var GPA1 = 0;
+        y = CurrGPANum * CurrCreditsNum;
+
+        z = y + CourseCreditsNum * (NewGradeNum - OldGradeNum);
+
+        GPA1 = round2d(z / CurrCreditsNum);
+        alert("معدلك التراكمي بعد اعادة " + eval(GPA1));
+        return 0;
+    }
+
+    function validateForm(form) {
+        if (form.cumGPA.value == "") {
+            alert("You need to enter your previous cumulative gpa in order to calculate your new one.");
+            return false;
+        }
+        if (form.cumCredits.value == "") {
+            alert("You need to enter the total number of credit hours you earned prior to this semester.");
+            return false;
+        }
+        if (form.cumGPA.value == form.gpa.value) {
+            confirm("Are you sure you are entering your cumulative gpa, and not your new semester gpa?");
+        } else {
+            return true;
+        }
+    }
+
+
+    //-->
+</script>
+
+<div align="left">&nbsp;</div>
+               
+               <table border="2" width="300" cellspacing="0" cellpadding="0" align="center">
+                  
+                  <tbody>
+                     
+                     <tr>
+                        
+                        <th colspan="3" bgcolor="F86906"><span style="color: #ffffff; font-size: medium;">توزيع الدرجات</span></th>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td colspan="2" bgcolor="#F1C40F">
+                           
+                           <div align="center"><span style="font-size: small;"><b>درجة<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></span></div>
+                           
+                        </td>
+                        
+                        <td bgcolor="#F1C40F">
+                           
+                           <div align="center"><span style="font-size: small;"><b> معدل </b></span></div>
+                           
+                        </td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td colspan="2" bgcolor="#FFFFFF">
+                           
+                           <div align="center"><span style="font-size: small;">&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+                           
+                        </td>
+                        
+                        <td bgcolor="#FFFFFF" width="82">
+                           
+                           <div align="center"><span style="font-size: small;">4.0</span></div>
+                           
+                        </td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td colspan="2" bgcolor="#FFFFFF">
+                           
+                           <div align="center"><span style="font-size: small;">&nbsp;&nbsp;A-&nbsp;</span></div>
+                           
+                        </td>
+                        
+                        <td width="82">
+                           
+                           <div align="center"><span style="font-size: small;">3.7</span></div>
+                           
+                        </td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td colspan="2" bgcolor="#FFFFFF">
+                           
+                           <div align="center"><span style="font-size: small;">&nbsp;&nbsp;B+&nbsp;</span></div>
+                           
+                        </td>
+                        
+                        <td bgcolor="#FFFFFF" width="82">
+                           
+                           <div align="center"><span style="font-size: small;">3.3</span></div>
+                           
+                        </td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td colspan="2" bgcolor="#FFFFFF">
+                           
+                           <div align="center"><span style="font-size: small;">B&nbsp;</span></div>
+                           
+                        </td>
+                        
+                        <td bgcolor="#FFFFFF" width="82">
+                           
+                           <div align="center"><span style="font-size: small;">3.0</span></div>
+                           
+                        </td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td colspan="2" bgcolor="#FFFFFF">
+                           
+                           <div align="center"><span style="font-size: small;">B-</span></div>
+                           
+                        </td>
+                        
+                        <td bgcolor="#FFFFFF" width="82">
+                           
+                           <div align="center"><span style="font-size: small;">2.7</span></div>
+                           
+                        </td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td colspan="2" bgcolor="#FFFFFF">
+                           
+                           <div align="center"><span style="font-size: small;"> C+</span></div>
+                           
+                        </td>
+                        
+                        <td bgcolor="#FFFFFF" width="82">
+                           
+                           <div align="center"><span style="font-size: small;">2.3</span></div>
+                           
+                        </td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td colspan="2" bgcolor="#FFFFFF">
+                           
+                           <div align="center"><span style="font-size: small;">C&nbsp;&nbsp;</span></div>
+                           
+                        </td>
+                        
+                        <td bgcolor="#FFFFFF" width="82">
+                           
+                           <div align="center"><span style="font-size: small;">2.0</span></div>
+                           
+                        </td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td colspan="2" bgcolor="#FFFFFF">
+                           
+                           <div align="center"><span style="font-size: small;">C-&nbsp;</span></div>
+                           
+                        </td>
+                        
+                        <td bgcolor="#FFFFFF" width="82">
+                           
+                           <div align="center"><span style="font-size: small;">1.7</span></div>
+                           
+                        </td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td colspan="2" bgcolor="#FFFFFF">
+                           
+                           <div align="center"><span style="font-size: small;">D+</span></div>
+                           
+                        </td>
+                        
+                        <td bgcolor="#FFFFFF" width="82">
+                           
+                           <div align="center"><span style="font-size: small;">1.3</span></div>
+                           
+                        </td>
+                        
+                     </tr>
+                     
+                     <tr>
+                        
+                        <td colspan="2" bgcolor="#FFFFFF">
+                           
+                           <div align="center"><span style="font-size: small;">D&nbsp;&nbsp;</span></div>
+                           
+                        </td>
+                        
+                        <td bgcolor="#FFFFFF" width="82">
+                           
+                           <div align="center"><span style="font-size: small;">1.0</span></div>
+                           
+                        </td>
+                        
+                     </tr>
+                     
+                     
+                     
+                     <tr>
+                        
+                        <td colspan="2" bgcolor="#FFFFFF">
+                           
+                           <div align="center"><span style="font-size: small;">&nbsp;&nbsp;&nbsp;&nbsp;F&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+                           
+                        </td>
+                        
+                        <td bgcolor="#FFFFFF" width="82" height="17">
+                           
+                           <div align="center"><span style="font-size: small;">0.0</span></div>
+                           
+                        </td>
+                        
+                     </tr>
+                     
+                  </tbody>
+                  
+               </table>
+          
+ 
+
+
+
+<form name="GPACalcForm">
+  <div align="center"></div>
+<div>
+<table bordercolor="#06F8F1" style="background-color:#F8A706; border-collapse:collapse; border-width:100px; width:400px">
+  <tbody>
+    <tr>
+                                   <td style="padding:12px; text-align:right" valign="bottom">&nbsp;</td>
+      <td style="padding:12px" valign="bottom"><strong><span face="arial,helvetica" style="font-family:arial,helvetica">ادخل درجاتك مثال<br />
+      (A,A-,B+,B,B-....)</span></strong></td>
+      <td style="padding:9px" valign="bottom"><strong><span face="arial,helvetica" style="font-family:arial,helvetica">عدد ساعات المادة</span></strong></td>
+    </tr>
+    <tr>
+      <td style="padding:8px"><span face="arial,helvetica" style="font-family:arial,helvetica">مادة 1</span></td>
+      <td style="padding:8px"><input align="top" maxlength="5" name="GR1" size="5" type="text" /></td>
+      <td style="padding:8px"><input align="top" maxlength="5" name="CR1" size="5" type="text" /></td>
+    </tr>
+    <tr>
+      <td style="padding:8px"><span face="arial,helvetica" style="font-family:arial,helvetica">مادة 2</span></td>
+      <td style="padding:8px"><input align="top" maxlength="5" name="GR2" size="5" type="text" /></td>
+      <td style="padding:8px"><input align="top" maxlength="5" name="CR2" size="5" type="text" /></td>
+    </tr>
+    <tr>
+      <td style="padding:8px"><span face="arial,helvetica" style="font-family:arial,helvetica">مادة 3</span></td>
+      <td style="padding:8px"><input align="top" maxlength="5" name="GR3" size="5" type="text" /></td>
+      <td style="padding:8px"><input align="top" maxlength="5" name="CR3" size="5" type="text" /></td>
+    </tr>
+    <tr>
+      <td style="padding:8px"><span face="arial,helvetica" style="font-family:arial,helvetica">مادة 4</span></td>
+      <td style="padding:8px"><input align="top" maxlength="5" name="GR4" size="5" type="text" /></td>
+      <td style="padding:8px"><input align="top" maxlength="5" name="CR4" size="5" type="text" /></td>
+    </tr>
+    <tr>
+      <td style="padding:8px"><span face="arial,helvetica" style="font-family:arial,helvetica">ملدة 5</span></td>
+      <td style="padding:8px"><input align="top" maxlength="5" name="GR5" size="5" type="text" /></td>
+      <td style="padding:8px"><input align="top" maxlength="5" name="CR5" size="5" type="text" /></td>
+    </tr>
+    <tr>
+      <td style="padding:8px"><span face="arial,helvetica" style="font-family:arial,helvetica">مادة 6</span></td>
+      <td style="padding:8px"><input align="top" maxlength="5" name="GR6" size="5" type="text" /></td>
+      <td style="padding:8px"><input align="top" maxlength="5" name="CR6" size="5" type="text" /></td>
+    </tr>
+    <tr>
+      <td style="padding:8px"><span face="arial,helvetica" style="font-family:arial,helvetica">مادة 7</span></td>
+      <td style="padding:8px"><input align="top" maxlength="5" name="GR7" size="5" type="text" /></td>
+      <td style="padding:8px"><input align="top" maxlength="5" name="CR7" size="5" type="text" /></td>
+    </tr>
+    <tr>
+      <td style="padding:8px"><span face="arial,helvetica" style="font-family:arial,helvetica">مادة 8</span></td>
+      <td style="padding:8px"><input align="top" maxlength="5" name="GR8" size="5" type="text" /></td>
+      <td style="padding:8px"><input align="top" maxlength="5" name="CR8" size="5" type="text" /></td>
+    </tr>
+    <tr align="center">
+      <td colspan="3" style="padding:8px">
+      <p><input name="CalcButton" onclick="gpacalc()" style="background-color: #4b08a1; color: #ffffff;" type="button" value="احسب" />&nbsp;&nbsp; <input style="background-color: #4b08a1; color: #ffffff;" type="reset" value="امسح" /></p>
+
+      <p id="gpacalc">&nbsp;</p>
+
+      <table bordercolor="#4b08a1" style="background-color:#f2f2f2; border-collapse:collapse; border-width:5px; width:250px">
+        <tbody>
+          <tr>
+            <td rowspan="2" style="padding:5px"><strong><span face="arial,helvetica" style="font-family:arial,helvetica">
+            <td style="padding:5px"><strong><span face="arial,helvetica" style="font-family:arial,helvetica">معدلك التراكمي مال الفصل الماضي </span></strong></td>
+            <td style="padding:5px"><strong><span face="arial,helvetica" style="font-family:arial,helvetica">عدد الساعات اللي خلصتها</span></strong></td>
+          </tr>
+          <tr>
+            <td style="padding:5px"><input align="top" maxlength="5" name="cumGPA" size="5" type="text" /></td>
+            <td style="padding:5px"><input align="top" maxlength="5" name="cumCredits" size="5" type="text" /></td>
+          </tr>
+          
+          <tr align="center">
+            <td colspan="3" style="padding:5px">
+            <p style="text-align: center;"><input name="CalcCum" onclick="cumCalc()" style="background-color: #4b08a1; color: #ffffff;" type="button" value="احسب" />&nbsp; <input style="background-color: #4b08a1; color: #ffffff;" type="reset" value="امسح" /></p>
+
+            <p id="cumcalc">&nbsp;</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</form>
+
+<p>&nbsp;</p>
+
+<h3>ضع هدفك لمعدلك القادم</h3>
+
+<p>كم يحتاج لي عشان اوصل لهذا المعدل ..هذه .الاداة تساعدك عشان تعرف كم يحتاجلك عشان توصل لهذا المعدل.</p>
+
+
+<p>&nbsp;</p>
+
+<form name="GoalGPACalc">
+<table bordercolor="#06F8F1" style="background-color:#F8A706; border-collapse:collapse; border-width:5px; width:300px">
+  <tbody>
+    <tr>
+      <td style="padding:5px">
+      <p style="text-align: center;"><strong>معدلك التراكمي الحالي </strong></p>
+      </td>
+      <td style="padding:5px">
+      <p style="text-align: center;"><input name="currGPA" size="5" type="text" /></p>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding:5px">
+      <p style="text-align: center;"><strong>عدد الساعات اللي خلصتها</strong></p>
+      </td>
+      <td style="padding:5px">
+      <p style="text-align: center;"><input name="currCredits" size="5" type="text" /></p>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding:5px">
+      <p style="text-align: center;"><strong>كم تتمنى معدلك يوصل؟</strong></p>
+      </td>
+      <td style="padding:5px">
+      <p style="text-align: center;"><input name="goalGPA" size="5" type="text" /></p>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding:5px">
+      <p style="text-align: center;"><strong>عدد ساعات الفصل القادم &nbsp;</strong></p>
+      </td>
+      <td style="padding:5px">
+      <p style="text-align: center;"><input name="newCredits" size="5" type="text" /></p>
+      </td>
+    </tr>
+    <tr align="center">
+      <td colspan="2" style="padding:5px">
+      <p style="text-align: center;"><input name="CalcGoal" onclick="GoalCalc()" style="background-color: #4b08a1; color: #ffffff;" type="button" value="احسب " /> &nbsp;&nbsp; <input style="background-color: #4b08a1; color: #ffffff;" type="reset" value="امسح" /></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</form>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<h3>حساب معدل لما تعيد المادة</h3>
+
+<p>&nbsp;</p>
+
+<p>طبعاً لما تعيد المادة تنحذف الدرجة السابقة وتعتبر درجة الاعادة</p>
+
+
+<form name="RepeatCalcForm">
+<table bordercolor="#06F8F1" style="background-color:#F8A706; border-collapse:collapse; border-width:5px; width:300px">
+  <tbody>
+    <tr>
+      <td style="padding:5px">
+      <p style="text-align: center;"><strong>معدلك التراكمي الحالي</strong></p>
+      </td>
+      <td style="padding:5px">
+      <p style="text-align: center;"><input name="CurrGPA" size="5" type="text" /></p>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding:5px">
+      <p style="text-align: center;"><strong>عدد الساعات الحالية</strong></p>
+      </td>
+      <td style="padding:5px">
+      <p style="text-align: center;"><input name="CurrCredits" size="5" type="text" /></p>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding:5px">
+      <p style="text-align: center;"><strong>عدد ساعات المادة اللي بتعيدها </strong></p>
+      </td>
+      <td style="padding:5px">
+      <p style="text-align: center;"><input name="CourseCredits" size="5" type="text" /></p>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding:5px">
+      <p style="text-align: center;"><strong>الدرجة السابقة للمادة&nbsp;</strong></p>
+      </td>
+      <td style="padding:5px">
+      <p style="text-align: center;"><input name="OldGrade" size="5" type="text" /></p>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding:5px">
+      <p style="text-align: center;"><strong>درجتك بعد الاعادة&nbsp;</strong></p>
+      </td>
+      <td style="padding:5px">
+      <p style="text-align: center;"><input name="NewGrade" size="5" type="text" /></p>
+      </td>
+    </tr>
+    <tr align="center">
+      <td colspan="2" style="padding:5px">
+      <p style="text-align: center;"><input name="CalcRepeat" onclick="RepeatCalc()" style="background-color: #4b08a1; color: #ffffff;" type="button" value="احسب" /> &nbsp;&nbsp; <input style="background-color: #4b08a1; color: #ffffff;" type="reset" value="امسح" /></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</form>
+
+<p>&nbsp;</p>
+
+</div>
+
+
+               
+                        
+                                 
+</body>
+</html>
